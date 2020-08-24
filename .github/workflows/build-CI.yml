@@ -6,8 +6,8 @@ on:
   watch:
     types: started
     
-  repository_dispatch:
-    types: 'run'
+  #repository_dispatch:
+  #  types: 'run'
     
 env:
   TZ: 'Asia/Shanghai'
