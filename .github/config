@@ -6467,7 +6467,7 @@ CONFIG_PACKAGE_tcpping=y
 # CONFIG_PACKAGE_trafficshaper is not set
 # CONFIG_PACKAGE_travelmate is not set
 CONFIG_PACKAGE_trojan=y
-CONFIG_PACKAGE_trojan-go=y
+######CONFIG_PACKAGE_trojan-go=y
 
 #
 # Configuration
