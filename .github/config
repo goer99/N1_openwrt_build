@@ -2,7 +2,8 @@
 
 cd lede
 
-git clone https://github.com/tuanqing/install-program package/install-program
+#git clone https://github.com/tuanqing/install-program package/install-program
+git clone https://github.com/goer99/install-program package/install-program
 svn co https://github.com/xiaorouji/openwrt-package/trunk/lienol/luci-theme-bootstrap-mod \
     package/luci-theme-bootstrap-mod
 svn co https://github.com/xiaorouji/openwrt-package/trunk/lienol/luci-theme-argon-dark-mod \
