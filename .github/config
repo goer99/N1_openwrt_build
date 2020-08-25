@@ -65,34 +65,31 @@ sed -i '/PKG_SOURCE_URL/a PKG_SOURCE_VERSION:=4799b312b8244ec067b8ae9ba4b85c8778
 
 cat >.config <<-EOF
 ## target
-
 CONFIG_TARGET_armvirt=y
 CONFIG_TARGET_armvirt_64=y
-
 CONFIG_TARGET_armvirt_64_Default=y
+
 ## luci app
 #CONFIG_PACKAGE_luci-app-adbyby-plus=y
 #CONFIG_PACKAGE_luci-app-aria2=y
 #CONFIG_PACKAGE_luci-app-cifs-mount=y
 #CONFIG_PACKAGE_luci-app-samba4=y
 #CONFIG_PACKAGE_luci-app-ttyd=y
+
 ## luci theme
 CONFIG_PACKAGE_luci-theme-argon-dark-mod=y
 CONFIG_PACKAGE_luci-theme-argon-light-mod=y
-
 CONFIG_PACKAGE_luci-theme-bootstrap-mod=y
+
 ## remove
 # CONFIG_UnblockNeteaseMusic_NodeJS is not set
 # CONFIG_PACKAGE_luci-app-webadmin is not set
+
 ## others
-
 CONFIG_BRCMFMAC_SDIO=y
-
 CONFIG_LUCI_LANG_en=y
 
-
 ## Below is from N1-arm64-r20.7.7-20200712-flippy
-
 #
 # 3. Applications
 #
