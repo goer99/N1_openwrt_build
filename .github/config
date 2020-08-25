@@ -60,7 +60,8 @@ sed -i '/PKG_SOURCE_VERSION:=/d' package/lean/shadowsocksr-libev/Makefile
 sed -i '/PKG_SOURCE_URL/a PKG_SOURCE_VERSION:=4799b312b8244ec067b8ae9ba4b85c877858976c' \
     package/lean/shadowsocksr-libev/Makefile
 
-sed -i 's/ipaddr:-"192.168.1.1"/ipaddr:-"192.168.1.10"/' package/base-files/files/bin/config_generate
+## 更改默认ip
+#sed -i 's/ipaddr:-"192.168.1.1"/ipaddr:-"192.168.1.10"/' package/base-files/files/bin/config_generate
 
 #cat >.config <<-EOF
 ## target
@@ -4536,7 +4537,7 @@ CONFIG_PACKAGE_libxml2=y
 # CONFIG_MEASUREMENT_KIT_BUILD_DEPENDS is not set
 # CONFIG_PACKAGE_minizip is not set
 # CONFIG_PACKAGE_mtdev is not set
-# CONFIG_PACKAGE_musl-fts is not set
+CONFIG_PACKAGE_musl-fts=y
 CONFIG_PACKAGE_mxml=y
 # CONFIG_PACKAGE_nacl is not set
 # CONFIG_PACKAGE_nlohmannjson is not set
