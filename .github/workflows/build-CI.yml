@@ -46,6 +46,7 @@ jobs:
       - name: Compile openwrt
         run: |
           cd lede
+          make toolchain/uClibc/{clean,compile,install}
           make download -j8
           make -j$(nproc) || make -j1 V=s
 
