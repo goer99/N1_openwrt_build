@@ -51,6 +51,7 @@ jobs:
 
       - name: Build firmware
         run: |
+          ll lede/bin/targets/*/*/*.tar.gz
           cp lede/bin/targets/*/*/*.tar.gz ./openwrt
           sudo ./make -d
           
@@ -61,6 +62,7 @@ jobs:
             filename=$(ls .)
             filename=${filename%.*}
             gzip *.img
+            ll
             cd ../
             echo "::set-env name=firmware_$((++i))::$filename"
           done
