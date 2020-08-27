@@ -1,5 +1,5 @@
-# 一、 Github Actions 自动构建斐讯N1 OpenWrt固件脚本  Automatically Build OpenWrt Firmware for PHICOMM N1 by Github Actions
-# 
+# 一、 Github Actions 自动构建斐讯N1 OpenWrt固件脚本  
+# Automatically Build OpenWrt Firmware for PHICOMM N1 by Github Actions
 
 **制作脚本已部署到Github Action，真正实现一栈式全自动构建，每月28日自动构建，无须自行制作，下载即可用**
 
