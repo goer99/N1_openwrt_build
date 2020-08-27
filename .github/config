@@ -68,7 +68,7 @@ sed -i '/PKG_SOURCE_URL/a PKG_SOURCE_VERSION:=4799b312b8244ec067b8ae9ba4b85c8778
 #sed -i "s/OpenWrt/新主机名/g" package/base-files/files/bin/config_generate
 
 # 更改版本号
-sed -i "s/OpenWrt/flippy build on $(date -I) for /g" package/lean/default-settings/files/zzz-default-settings
+sed -i "s/OpenWrt/tom build on $(date -I) for /g" package/lean/default-settings/files/zzz-default-settings
 
 cat >.config <<-EOF
 ## target
