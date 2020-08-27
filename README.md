@@ -8,7 +8,7 @@ Automatically Build OpenWrt Firmware for PHICOMM N1 by Github Actions
 
 
 
-# 二、自己手动编译&构建之使用方法
+# 二、自己手动编译&构建之方法
 
 1. Linux环境，推荐使用Ubuntu 18.04 LTS
 2. 编译好待构建的OpenWrt固件，不会的自行科普 [Lean's OpenWrt source](https://github.com/coolsnowwolf/lede "Lean's OpenWrt source")  
