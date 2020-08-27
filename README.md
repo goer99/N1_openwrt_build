@@ -1,12 +1,12 @@
-# 自动构建斐讯N1 OpenWrt固件脚本
-# Automatically Build OpenWrt Firmware for PHICOMM N1
+# 一、 Github Actions 自动构建斐讯N1 OpenWrt固件脚本  Automatically Build OpenWrt Firmware for PHICOMM N1 by Github Actions
+# 
 
 **制作脚本已部署到Github Action，真正实现一栈式全自动构建，每月28日自动构建，无须自行制作，下载即可用**
 
 [![N1-OpenWrt-CI](https://github.com/tuanqing/mknop/workflows/N1-OpenWrt-CI/badge.svg?branch=master)](https://github.com/tuanqing/mknop/actions)  
  👆👆👆&nbsp; &nbsp; 戳上面查看构建状态
 
-## 使用方法
+# 二、自己手动编译&构建之使用方法
 
 1. Linux环境，推荐使用Ubuntu 18.04 LTS
 2. 编译好待构建的OpenWrt固件，不会的自行科普 [Lean's OpenWrt source](https://github.com/coolsnowwolf/lede "Lean's OpenWrt source")  
@@ -21,14 +21,14 @@
    一键安装到emmc脚本已迁移至openwrt package，解决需要自选依赖的问题。使用方法如下，悉知！！**
 
    **用法**：  
-   1、`git clone https://github.com/tuanqing/install-program package/install-program`  
-   2、执行 `make menuconfig` ，选中Utilities下的install-program
+   a. `git clone https://github.com/tuanqing/install-program package/install-program`  
+   b. 执行 `make menuconfig` ，选中Utilities下的install-program
       ``` 
       Utilities  --->  
          <*> install-program
       ```
-   3、编译完成之后使用本源码制作镜像写入U盘启动，之后执行 `n1-install` 即可安装到emmc  
-   4、将固件上传到 `/tmp/upgrade`( xxx.img )，之后执行 `n1-update` 即可从该固件升级
+   c. 编译完成之后使用本源码制作镜像写入U盘启动，之后执行 `n1-install` 即可安装到emmc  
+   d. 将固件上传到 `/tmp/upgrade`( xxx.img )，之后执行 `n1-update` 即可从该固件升级
 
 3. 克隆仓库到本地  
    `git clone https://github.com/tuanqing/mknop` 
@@ -42,8 +42,8 @@
 8. 写盘启动，写盘工具推荐 [Etcher](https://www.balena.io/etcher/)
 
 **注意**：  
-1、待构建的固件格式只支持rootfs.tar[.gz]、 ext4-factory.img[.gz]、root.ext4[.gz] 6种，推荐使用rootfs.tar.gz格式  
-2、默认不会清理out目录，请手动删除，或使用 `sudo ./make -c` 清理
+  a. 待构建的固件格式只支持rootfs.tar[.gz]、 ext4-factory.img[.gz]、root.ext4[.gz] 6种，推荐使用rootfs.tar.gz格式  
+  b. 默认不会清理out目录，请手动删除，或使用 `sudo ./make -c` 清理
 
 ## 特别说明
 
