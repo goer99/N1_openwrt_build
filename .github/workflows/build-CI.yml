@@ -79,8 +79,8 @@ jobs:
           name: ${{ env.firmware_2 }}
           path: out/5.4.50
 
-#       - name: Upload config file
-#         uses: actions/upload-artifact@main
-#         with:
-#           name: config
-#           path: lede/.config
+      - name: Upload config file
+        uses: actions/upload-artifact@main
+        with:
+          name: config
+          path: lede/.config
