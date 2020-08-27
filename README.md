@@ -1,10 +1,12 @@
 # 一、 Github Actions 自动构建斐讯N1 OpenWrt固件脚本  
-# Automatically Build OpenWrt Firmware for PHICOMM N1 by Github Actions
+Automatically Build OpenWrt Firmware for PHICOMM N1 by Github Actions
 
 **制作脚本已部署到Github Action，真正实现一栈式全自动构建，每月28日自动构建，无须自行制作，下载即可用**
 
 [![N1-OpenWrt-CI](https://github.com/tuanqing/mknop/workflows/N1-OpenWrt-CI/badge.svg?branch=master)](https://github.com/tuanqing/mknop/actions)  
  👆👆👆&nbsp; &nbsp; 戳上面查看构建状态
+
+
 
 # 二、自己手动编译&构建之使用方法
 
@@ -44,6 +46,8 @@
 **注意**：  
   a. 待构建的固件格式只支持rootfs.tar[.gz]、 ext4-factory.img[.gz]、root.ext4[.gz] 6种，推荐使用rootfs.tar.gz格式  
   b. 默认不会清理out目录，请手动删除，或使用 `sudo ./make -c` 清理
+
+
 
 ## 特别说明
 
