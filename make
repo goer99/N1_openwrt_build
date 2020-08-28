@@ -252,9 +252,9 @@ set_rootsize() {
     rootsize=
 
     while true; do
-        read -p " input the rootfs partition size, defaults to 1024m, do not less than 256m
+        read -p " input the rootfs partition size, defaults to 512m, do not less than 256m
  if you don't know what this means, press Enter to keep default: " rootsize
-        [ $rootsize ] || rootsize=1024
+        [ $rootsize ] || rootsize=512
         if [[ "$rootsize" -ge 256 ]]; then
             tag $rootsize && echo
             break
@@ -275,7 +275,7 @@ Options:
   -c, --clean       clean up the output and temporary directories
 
   -d, --default     use the default configuration, which means that use the first firmware in the "openwrt" directory, \
-the kernel version is "all", and the rootfs partition size is 1024m
+the kernel version is "all", and the rootfs partition size is 512m
 
   -k=VERSION        set the kernel version, which must be in the "kernel" directory
      , -k all       build all the kernel version
@@ -309,7 +309,7 @@ while [ "$1" ]; do
         echo " clean up ok!" && exit
         ;;
     -d | --default)
-        : ${rootsize:=1024}
+        : ${rootsize:=512}
         : ${firmware:="${firmwares[0]}"}
         : ${kernel:="all"}
         ;;
