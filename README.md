@@ -71,7 +71,7 @@ Automatically Build OpenWrt Firmware for PHICOMM N1 by Github Actions
 
 * 使用参数
    * `-c, --clean` ，清理临时文件和输出目录
-   * `-d, --default` ，使用默认配置来构建固件( openwrt下的第一个固件、构建所有内核、ROOTFS分区大小默认设为512m )
+   * `-d, --default` ，使用默认配置来构建固件( openwrt下的第一个固件、构建所有内核、ROOTFS分区大小默认设为800m )
    * `--kernel` ，显示kernel文件夹下的所有内核
    * `-k=VERSION` ，设置内核版本，设置为 `all` 将会构架所有内核版本固件，设置为 `latest` 将构建最新内核版本固件
    * `-s, --size=SIZE` ，设置ROOTFS分区大小，不要小于256m
