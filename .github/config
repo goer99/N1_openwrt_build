@@ -16,6 +16,9 @@ EOF
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
+sed -i '/FEATURES+=/ { s/cpiogz //; s/ext4 //; s/ramdisk //; s/squashfs //; }' \
+    target/linux/armvirt/Makefile
+    
 # 更改ip
 #sed -i 's/ipaddr:-"192.168.1.1"/ipaddr:-"192.168.1.10"/' package/base-files/files/bin/config_generate
 
