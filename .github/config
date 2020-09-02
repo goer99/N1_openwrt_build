@@ -1,0 +1,87 @@
+#!/bin/bash
+
+cd lede
+
+git clone https://github.com/tuanqing/install-program package/install-program
+svn co https://github.com/xiaorouji/openwrt-package/trunk/lienol/luci-theme-bootstrap-mod \
+    package/luci-theme-bootstrap-mod
+svn co https://github.com/xiaorouji/openwrt-package/trunk/lienol/luci-theme-argon-dark-mod \
+    package/luci-theme-argon-dark-mod
+svn co https://github.com/xiaorouji/openwrt-package/trunk/lienol/luci-theme-argon-light-mod \
+    package/luci-theme-argon-light-mod
+
+cat >feeds.conf.default <<-EOF
+# src-git packages https://git.openwrt.org/feed/packages.git
+# src-git luci https://git.openwrt.org/project/luci.git;openwrt-19.07
+src-git packages https://github.com/Lienol/openwrt-packages.git;dev-master
+src-git luci https://github.com/Lienol/openwrt-luci.git;dev-18.06
+src-git routing https://git.openwrt.org/feed/routing.git
+src-git telephony https://git.openwrt.org/feed/telephony.git
+src-git helloworld https://github.com/fw876/helloworld
+EOF
+
+rm -rf package/lean/{samba4,luci-app-samba4,luci-app-ttyd}
+
+./scripts/feeds update -a
+./scripts/feeds install -a
+
+patches="../.github/patches"
+echo "patching feeds luci"
+git apply $patches/luci/*.patch --directory=feeds/luci
+echo "patching luci-theme-bootstrap-mod"
+git apply $patches/bootstrap/*.patch --directory=package/luci-theme-bootstrap-mod
+
+zzz="package/lean/default-settings/files/zzz-default-settings"
+sed -i 's/samba/samba4/' $zzz
+sed -i 's#openwrt.proxy.ustclug.org#mirrors.bfsu.edu.cn\\/openwrt#' $zzz
+sed -i "/openwrt_luci/i sed -i '/Lienol/d' /etc/opkg/distfeeds.conf" $zzz
+sed -i "/openwrt_luci/i sed -i '/helloworld/d' /etc/opkg/distfeeds.conf" $zzz
+
+packages=" \
+brcmfmac-firmware-43430-sdio brcmfmac-firmware-43455-sdio kmod-brcmfmac wpad \
+kmod-fs-ext4 kmod-fs-vfat kmod-fs-exfat dosfstools e2fsprogs antfs-mount \
+kmod-usb-storage kmod-usb-storage-extras kmod-usb-storage-uas \
+kmod-usb-net kmod-usb-net-asix-ax88179 kmod-usb-net-rtl8150 kmod-usb-net-rtl8152 \
+blkid lsblk parted fdisk cfdisk losetup resize2fs tune2fs pv unzip \
+lscpu htop iperf3 curl lm-sensors install-program 
+"
+sed -i '/FEATURES+=/ { s/cpiogz //; s/ext4 //; s/ramdisk //; s/squashfs //; }' \
+    target/linux/armvirt/Makefile
+for x in $packages; do
+    sed -i "/DEFAULT_PACKAGES/ s/$/ $x/" target/linux/armvirt/Makefile
+done
+
+rm -f package/lean/shadowsocksr-libev/patches/0002-Revert-verify_simple-and-auth_simple.patch
+sed -i '383,393 d' package/lean/shadowsocksr-libev/patches/0001-Add-ss-server-and-ss-check.patch
+sed -i 's/PKG_RELEASE:=5/PKG_RELEASE:=6/' package/lean/shadowsocksr-libev/Makefile
+sed -i '/PKG_SOURCE_VERSION:=/d' package/lean/shadowsocksr-libev/Makefile
+sed -i '/PKG_SOURCE_URL/a PKG_SOURCE_VERSION:=4799b312b8244ec067b8ae9ba4b85c877858976c' \
+    package/lean/shadowsocksr-libev/Makefile
+
+sed -i 's/ipaddr:-"192.168.1.1"/ipaddr:-"192.168.1.10"/' package/base-files/files/bin/config_generate
+
+cat >.config <<-EOF
+## target
+CONFIG_TARGET_armvirt=y
+CONFIG_TARGET_armvirt_64=y
+CONFIG_TARGET_armvirt_64_Default=y
+## luci app
+CONFIG_PACKAGE_luci-app-adbyby-plus=y
+CONFIG_PACKAGE_luci-app-aria2=y
+CONFIG_PACKAGE_luci-app-cifs-mount=y
+CONFIG_PACKAGE_luci-app-samba4=y
+CONFIG_PACKAGE_luci-app-ttyd=y
+## luci theme
+CONFIG_PACKAGE_luci-theme-argon-dark-mod=y
+CONFIG_PACKAGE_luci-theme-argon-light-mod=y
+CONFIG_PACKAGE_luci-theme-bootstrap-mod=y
+## remove
+# CONFIG_UnblockNeteaseMusic_NodeJS is not set
+# CONFIG_PACKAGE_luci-app-webadmin is not set
+## others
+CONFIG_BRCMFMAC_SDIO=y
+CONFIG_LUCI_LANG_en=y
+EOF
+
+make defconfig
+cat .config
