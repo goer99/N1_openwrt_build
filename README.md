@@ -93,5 +93,6 @@ Automatically Build OpenWrt Firmware for PHICOMM N1 by Github Actions
 
       **注意**：添加的文件应保持与 ROOTFS 分区目录结构一致
       
-× N1做旁路由使用，需在防火墙里添加如下规则。若无法访问国内网站，则需要在”网络“-”接口“-”LAN“-”物理设置“-”桥接接口“中取消桥接。
+      
+* N1做旁路由使用，需在防火墙里添加如下规则。若无法访问国内网站，则需要在”网络“-”接口“-”LAN“-”物理设置“-”桥接接口“中取消桥接。
 iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
