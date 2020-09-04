@@ -41,7 +41,7 @@ Automatically Build OpenWrt Firmware for PHICOMM N1 by Github Actions
    如果你不了解这些设置项，请按回车保持默认，或者直接执行  
    `sudo ./make -d` 
 7. 等待构建完成，默认输出文件夹为 out
-8. 写盘启动，写盘工具推荐 [Etcher](https://www.balena.io/etcher/)
+8. 写盘启动，写盘工具务必使用 [Etcher](https://www.balena.io/etcher/)，使用其他写盘工具即便可以U盘启动，也会出现kernel panic而无法进入系统。
 
 **注意**：  
   a. 待构建的固件格式只支持rootfs.tar[.gz]、 ext4-factory.img[.gz]、root.ext4[.gz] 6种，推荐使用rootfs.tar.gz格式  
@@ -70,7 +70,7 @@ Automatically Build OpenWrt Firmware for PHICOMM N1 by Github Actions
 
 * 使用参数
    * `-c, --clean` ，清理临时文件和输出目录
-   * `-d, --default` ，使用默认配置来构建固件( openwrt下的第一个固件、构建所有内核、ROOTFS分区大小默认设为512m )
+   * `-d, --default` ，使用默认配置来构建固件( openwrt下的第一个固件、构建所有内核、ROOTFS分区大小默认设为800m )
    * `--kernel` ，显示kernel文件夹下的所有内核
    * `-k=VERSION` ，设置内核版本，设置为 `all` 将会构架所有内核版本固件，设置为 `latest` 将构建最新内核版本固件
    * `-s, --size=SIZE` ，设置 ROOTFS 分区大小，不要小于 256M
