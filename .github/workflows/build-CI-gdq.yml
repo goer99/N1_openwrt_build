@@ -40,7 +40,7 @@ jobs:
 
       - name: Install feeds & Make config
         env:
-          CONFIG: '.github/config'
+          CONFIG: '.github/config.gdq'
         run: |
           chmod +x $CONFIG
           ./$CONFIG
