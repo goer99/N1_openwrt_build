@@ -51,6 +51,7 @@ jobs:
         run: |
           ls -l lede/bin/targets/*/*/*.tar.gz
           cp lede/bin/targets/*/*/*.tar.gz ./openwrt
+          cd ./openwrt && tar -zxvf *.tar.gz
           sudo ./make -e -s 800
           
           i=0
