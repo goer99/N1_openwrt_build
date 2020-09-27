@@ -51,7 +51,7 @@ jobs:
         run: |
           ls -l lede/bin/targets/*/*/*.tar.gz
           cp lede/bin/targets/*/*/*.tar.gz ./openwrt
-          sudo ./make -d
+          sudo ./make -e -s 800
           
           i=0
           cd out
@@ -65,11 +65,11 @@ jobs:
             echo "::set-env name=firmware_$((++i))::$filename"
           done
           
-      - name: Upload firmware @ kernel 5.4.60
+      - name: Upload firmware @ openwrt kernel
         uses: actions/upload-artifact@main
         with:
           name: ${{ env.firmware_1 }}_for_udisk
-          path: out/5.4.60
+          path: out/
 
       #- name: Upload firmware @ kernel 4.19.134
       #  uses: actions/upload-artifact@main
