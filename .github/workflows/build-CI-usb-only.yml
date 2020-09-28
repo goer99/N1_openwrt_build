@@ -66,11 +66,12 @@ jobs:
             echo "::set-env name=firmware_$((++i))::$filename"
           done
           
-      - name: Upload firmware @ openwrt kernel
+      - name: Upload firmware @ kernel 5.4.60
         uses: actions/upload-artifact@main
         with:
           name: ${{ env.firmware_1 }}_for_udisk
-          path: out/
+          path: out/5.4.60
+          
 
       #- name: Upload firmware @ kernel 4.19.134
       #  uses: actions/upload-artifact@main
