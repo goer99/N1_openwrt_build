@@ -6,6 +6,7 @@ Automatically Build OpenWrt Firmware for PHICOMM N1 by Github Actions
 **核心4.19.134版本比较稳定** 
 
 *如需要最新版核心，见下面的链接（不一定稳定、不一定可用，建议先看看该库的issue列表）：*
+
 [![N1-OpenWrt-CI](https://github.com/tuanqing/mknop/workflows/N1-OpenWrt-CI/badge.svg?branch=master)](https://github.com/tuanqing/mknop/actions)  
 
 
