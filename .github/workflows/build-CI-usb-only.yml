@@ -72,11 +72,11 @@ jobs:
           path: out/5.4.60
           
 
-      #- name: Upload firmware @ kernel 4.19.134
-      #  uses: actions/upload-artifact@main
-      #  with:
-      #    name: ${{ env.firmware_1 }}
-      #    path: out/4.19.134
+      - name: Upload firmware @ kernel 4.19.134
+        uses: actions/upload-artifact@main
+        with:
+          name: ${{ env.firmware_1 }}
+          path: out/4.19.134
       
       #- name: Upload firmware @ kernel 5.4.50
       #  uses: actions/upload-artifact@main
