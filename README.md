@@ -3,10 +3,10 @@ Automatically Build OpenWrt Firmware for PHICOMM N1 by Github Actions
 
 **制作脚本已部署到Github Action，真正实现一栈式全自动构建，每月28日自动构建，无须自行制作，下载即可用**
 
-这里使用的是稳定版核心4.19.134，如需要最新版核心，见下面的链接：
+这里使用的是稳定版核心4.19.134，如需要最新版核心，见下面的链接（不一定稳定、不一定可用，建议先看看该库的issue列表）：
 
 [![N1-OpenWrt-CI](https://github.com/tuanqing/mknop/workflows/N1-OpenWrt-CI/badge.svg?branch=master)](https://github.com/tuanqing/mknop/actions)  
- 👆👆👆&nbsp; &nbsp; 
+
 
 
 
