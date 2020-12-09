@@ -79,5 +79,197 @@ CONFIG_BRCMFMAC_SDIO=y
 CONFIG_LUCI_LANG_en=y
 EOF
 
+cat >.config <<-EOF
+## target
+CONFIG_TARGET_armvirt=y
+CONFIG_TARGET_armvirt_64=y
+CONFIG_TARGET_armvirt_64_Default=y
+## luci app
+CONFIG_PACKAGE_luci-app-adbyby-plus=y
+CONFIG_PACKAGE_luci-app-aria2=y
+CONFIG_PACKAGE_luci-app-cifs-mount=y
+CONFIG_PACKAGE_luci-app-samba4=y
+CONFIG_PACKAGE_luci-app-ttyd=y
+## luci theme
+CONFIG_PACKAGE_luci-theme-argon-dark-mod=y
+CONFIG_PACKAGE_luci-theme-argon-light-mod=y
+CONFIG_PACKAGE_luci-theme-bootstrap-mod=y
+## remove
+# CONFIG_UnblockNeteaseMusic_NodeJS is not set
+# CONFIG_PACKAGE_luci-app-webadmin is not set
+## others
+CONFIG_BRCMFMAC_SDIO=y
+CONFIG_LUCI_LANG_en=y
+EOF
+
+# add useful packages
+cat >> .config <<-EOF
+CONFIG_PACKAGE_luci-app-netdata=y
+CONFIG_PACKAGE_luci-app-adguardhome=y
+CONFIG_PACKAGE_luci-app-airplay2=y
+CONFIG_PACKAGE_luci-app-amule=y
+CONFIG_PACKAGE_luci-app-baidupcs-web=y
+CONFIG_PACKAGE_luci-app-dnsforwarder=y
+CONFIG_PACKAGE_luci-app-docker=y
+CONFIG_PACKAGE_luci-app-familycloud=y
+CONFIG_PACKAGE_luci-app-filebrowser=y
+CONFIG_PACKAGE_luci-app-frpc=y
+CONFIG_PACKAGE_luci-app-frps=y
+CONFIG_PACKAGE_luci-app-guest-wifi=y
+CONFIG_PACKAGE_luci-app-haproxy-tcp=y
+CONFIG_PACKAGE_luci-app-hd-idle=y
+CONFIG_PACKAGE_luci-app-kcptun=y
+CONFIG_PACKAGE_luci-app-mwan3=y
+CONFIG_PACKAGE_luci-app-mwan3helper=y
+CONFIG_PACKAGE_luci-app-n2n_v2=y
+CONFIG_PACKAGE_luci-app-nfs=y
+CONFIG_PACKAGE_luci-app-openvpn=y
+CONFIG_PACKAGE_luci-app-openvpn-server=y
+CONFIG_PACKAGE_luci-app-passwall=y
+# Passwall Configuration
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ipt2socks=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Server=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_GO=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Brook=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_kcptun=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_haproxy=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ChinaDNS_NG=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_pdnsd=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_dns2socks=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_v2ray-plugin=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_simple-obfs=y
+# end of Passwall Configuration
+CONFIG_PACKAGE_luci-app-qbittorrent=y
+CONFIG_PACKAGE_luci-app-smartdns=y
+# 我常用的几个，只做旁路由使用
+CONFIG_PACKAGE_luci-app-firewall=y   # 防火墙和端口转发,必备
+CONFIG_PACKAGE_luci-app-sfe=y   # Turbo ACC 网络加速(开启 Fast Path 转发加速)
+CONFIG_PACKAGE_luci-app-unblockNeteaseMusic=y   # 解锁网易云
+# 按需选择
+CONFIG_PACKAGE_luci-app-wol=y   # 网络唤醒
+CONFIG_PACKAGE_luci-app-accesscontrol=y   # 上网时间控制
+CONFIG_PACKAGE_luci-app-arpbind=y   # IP/MAC 绑定
+CONFIG_PACKAGE_luci-app-autoreboot=y # 计划重启
+CONFIG_PACKAGE_luci-app-ddns=y   # 动态域名解析
+CONFIG_PACKAGE_luci-app-filetransfer=y   # 上传 ipk 文件功能
+CONFIG_PACKAGE_luci-app-ipsec-vpnd=y  # IPSec 服务端
+CONFIG_PACKAGE_luci-app-nlbwmon=y   # 网络带宽监视器
+CONFIG_PACKAGE_luci-app-ramfree=y   # 释放内存
+CONFIG_PACKAGE_luci-app-rclone=y  # rclone
+CONFIG_PACKAGE_luci-app-upnp=y   # 通用即插即用 UPnP(端口自动转发)
+CONFIG_PACKAGE_luci-app-vlmcsd=y # KMS 服务器（WIN 激活工具）
+CONFIG_PACKAGE_luci-app-vsftpd=y # FTP 服务器
+CONFIG_PACKAGE_luci-app-webadmin=y   # Web 管理页面设置
+CONFIG_PACKAGE_luci-app-xlnetacc=y   # 迅雷下载
+CONFIG_PACKAGE_luci-app-zerotier=y   # 虚拟局域网
+CONFIG_PACKAGE_luci-app-hd-idle=y   # 硬盘休眠
+CONFIG_PACKAGE_luci-app-pptp-server=y   # PPTP 服务端
+CONFIG_PACKAGE_luci-app-sqm=y   # 流量智能队列管理(QOS)
+CONFIG_PACKAGE_luci-app-transmission=y   # BT 下载
+CONFIG_PACKAGE_luci-app-usb-printer=y   # USB 打印服务器
+CONFIG_PACKAGE_luci-app-wireguard=y  # VPN 服务器 WireGuard 状态
+CONFIG_PACKAGE_luci-app-wrtbwmon=y   # 实时流量监测
+# 常用软件包:
+CONFIG_PACKAGE_curl=y
+CONFIG_PACKAGE_htop=y
+CONFIG_PACKAGE_nano=y
+CONFIG_PACKAGE_screen=y
+CONFIG_PACKAGE_tree=y
+CONFIG_PACKAGE_vim-fuller=y
+CONFIG_PACKAGE_wget=y
+CONFIG_PACKAGE_bash=y
+# Compression
+CONFIG_PACKAGE_gzip=y
+CONFIG_PACKAGE_unrar=y
+CONFIG_PACKAGE_unzip=y
+CONFIG_PACKAGE_zip=y
+# Disc
+CONFIG_PACKAGE_badblocks=y
+CONFIG_PACKAGE_blkid=y
+CONFIG_PACKAGE_cfdisk=y
+CONFIG_PACKAGE_cgdisk=y
+CONFIG_PACKAGE_eject=y
+CONFIG_PACKAGE_fdisk=y
+CONFIG_PACKAGE_hdparm=y
+CONFIG_PACKAGE_lsblk=y
+CONFIG_PACKAGE_lvm2=y
+CONFIG_PACKAGE_resize2fs=y
+# timezone
+CONFIG_PACKAGE_zoneinfo-asia=y
+
+
+### newly added
+# passwall configration
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ipt2socks=y
+# CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks is not set
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Server=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray=y
+# CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan is not set
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_GO=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Brook=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_kcptun is not set
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_haproxy=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ChinaDNS_NG=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_pdnsd=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_dns2socks=y
+
+# vssr
+CONFIG_PACKAGE_luci-app-vssr=y
+CONFIG_PACKAGE_luci-app-vssr_INCLUDE_V2ray=y
+CONFIG_PACKAGE_luci-app-vssr_INCLUDE_Trojan=y
+# CONFIG_PACKAGE_luci-app-vssr_INCLUDE_ShadowsocksR_Server is not set
+CONFIG_PACKAGE_luci-app-vssr_INCLUDE_ShadowsocksR_Socks=y
+# CONFIG_PACKAGE_luci-app-vssr-plus is not set
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_Shadowsocks=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_V2ray=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_Trojan=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_Kcptun=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_ShadowsocksR_Server=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_Shadowsocks_Server=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_ShadowsocksR_Socks=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_Shadowsocks_Socks=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_ipt2socks=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_microsocks=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_redsocks2=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_dns2socks=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_dnscrypt_proxy=y
+#-#CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_dnsforwarder=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_ChinaDNS=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_haproxy=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_privoxy=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_simple-obfs=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_simple-obfs-server=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_udpspeeder=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_udp2raw-tunnel=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_GoQuiet-client=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_GoQuiet-server=y
+CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_v2ray-plugin=y
+
+
+
+CONFIG_PACKAGE_trojan=y
+CONFIG_PACKAGE_trojan-go=y
+
+#
+# Configuration
+#
+# CONFIG_TROJAN_GO_COMPRESS_GOPROXY is not set
+CONFIG_TROJAN_GO_COMPRESS_UPX=y
+
+
+
+# CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan is not set
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_GO=y
+
+### newly added end
+
+EOF
+
+
 make defconfig
 cat .config
