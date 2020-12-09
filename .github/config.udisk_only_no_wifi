@@ -12,6 +12,8 @@ src-git telephony https://git.openwrt.org/feed/telephony.git
 src-git helloworld https://github.com/fw876/helloworld
 src-git laohu https://github.com/huchanghui123/Lienol-openwrt-packages-backup
 src-git xiaorouji https://github.com/xiaorouji/openwrt-package
+src-git diy https://github.com/firker/diy-ziyong
+src-git jerryk https://github.com/jerrykuku/openwrt-package
 EOF
 
 ./scripts/feeds update -a
