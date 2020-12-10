@@ -35,7 +35,8 @@ jobs:
           sudo timedatectl set-timezone "$TZ"
       - name: Clone Lean's openwrt
         run: |
-          git clone https://github.com/coolsnowwolf/lede
+          #git clone https://github.com/coolsnowwolf/lede
+          git clone https://github.com/goer99/openwrt-lean-stable
       - name: Install feeds & Make config
         env:
           CONFIG: '.github/config.udisk_only_no_wifi'
