@@ -12,7 +12,7 @@ src-git telephony https://git.openwrt.org/feed/telephony.git
 src-git helloworld https://github.com/fw876/helloworld.git
 src-git laohu https://github.com/huchanghui123/Lienol-openwrt-packages-backup
 src-git xiaorouji https://github.com/goer99/openwrt-package-xiaorouji-fork-lineol
-src-git diy https://github.com/firker/diy-ziyong
+#-vssr-# src-git diy https://github.com/firker/diy-ziyong
 src-git jerryk https://github.com/jerrykuku/openwrt-package
 EOF
 
@@ -205,6 +205,11 @@ CONFIG_PACKAGE_zoneinfo-asia=y
 
 
 ### newly added
+
+# passwall with trojan-go
+# CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan is not set
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_GO=y
+
 # passwall configration
 CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ipt2socks=y
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks is not set
@@ -220,40 +225,6 @@ CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ChinaDNS_NG=y
 CONFIG_PACKAGE_luci-app-passwall_INCLUDE_pdnsd=y
 CONFIG_PACKAGE_luci-app-passwall_INCLUDE_dns2socks=y
 
-# vssr
-CONFIG_PACKAGE_luci-app-vssr=y
-CONFIG_PACKAGE_luci-app-vssr_INCLUDE_V2ray=y
-CONFIG_PACKAGE_luci-app-vssr_INCLUDE_Trojan=y
-# CONFIG_PACKAGE_luci-app-vssr_INCLUDE_ShadowsocksR_Server is not set
-CONFIG_PACKAGE_luci-app-vssr_INCLUDE_ShadowsocksR_Socks=y
-# CONFIG_PACKAGE_luci-app-vssr-plus is not set
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_Shadowsocks=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_V2ray=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_Trojan=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_Kcptun=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_ShadowsocksR_Server=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_Shadowsocks_Server=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_ShadowsocksR_Socks=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_Shadowsocks_Socks=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_ipt2socks=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_microsocks=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_redsocks2=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_dns2socks=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_dnscrypt_proxy=y
-#-#CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_dnsforwarder=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_ChinaDNS=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_haproxy=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_privoxy=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_simple-obfs=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_simple-obfs-server=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_udpspeeder=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_udp2raw-tunnel=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_GoQuiet-client=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_GoQuiet-server=y
-CONFIG_PACKAGE_luci-app-vssr-plus_INCLUDE_v2ray-plugin=y
-
-
-
 CONFIG_PACKAGE_trojan=y
 CONFIG_PACKAGE_trojan-go=y
 
@@ -262,11 +233,6 @@ CONFIG_PACKAGE_trojan-go=y
 #
 # CONFIG_TROJAN_GO_COMPRESS_GOPROXY is not set
 CONFIG_TROJAN_GO_COMPRESS_UPX=y
-
-
-
-# CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan is not set
-CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_GO=y
 
 ### newly added end
 
