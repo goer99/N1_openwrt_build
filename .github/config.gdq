@@ -2,53 +2,48 @@
 
 cd lede
 
-(
-    cd package
-    git clone https://github.com/tuanqing/install-program
-    git clone https://github.com/tuanqing/openwrt-mentohust
-    git clone https://github.com/tuanqing/luci-app-mentohust
-    git clone https://github.com/jerrykuku/luci-theme-argon -b 18.06
-    git clone https://github.com/jerrykuku/luci-app-jd-dailybonus
-#     git clone https://github.com/lisaac/luci-lib-docker
-#     git clone https://github.com/lisaac/luci-app-dockerman
-)
+git clone https://github.com/goer99/n1-install-program package/install-program
+svn co https://github.com/goer99/openwrt-package-xiaorouji-fork-lineol/trunk/lienol/luci-theme-bootstrap-mod \
+    package/luci-theme-bootstrap-mod
+svn co https://github.com/goer99/openwrt-package-xiaorouji-fork-lineol/trunk/lienol/luci-theme-argon-dark-mod \
+    package/luci-theme-argon-dark-mod
+svn co hhttps://github.com/goer99/openwrt-package-xiaorouji-fork-lineol/trunk/lienol/luci-theme-argon-light-mod \
+    package/luci-theme-argon-light-mod
 
 cat >feeds.conf.default <<-EOF
+# src-git packages https:/git.openwrt.org/feed/packages.git
 # src-git luci https://git.openwrt.org/project/luci.git;openwrt-19.07
-# src-git packages https://git.openwrt.org/feed/packages.git
-src-git luci https://github.com/Lienol/openwrt-luci.git;18.06
-src-git packages https://github.com/Lienol/openwrt-packages.git;main
-src-git routing https://git.openwrt.org/feed/routing.git
-src-git telephony https://git.openwrt.org/feed/telephony.git
-src-git helloworld https://github.com/fw876/helloworld.git
 src-git leanpackages https://github.com/coolsnowwolf/packages
 src-git leanluci https://github.com/coolsnowwolf/luci
+src-git packages https://github.com/Lienol/openwrt-packages.git;dev-master
+src-git luci https://github.com/Lienol/openwrt-luci.git;dev-18.06
+src-git routing https://git.openwrt.org/feed/routing.git
+src-git telephony https://git.openwrt.org/feed/telephony.git
+src-git helloworld https://github.com/fw876/helloworld
 src-git laohu https://github.com/huchanghui123/Lienol-openwrt-packages-backup
 EOF
 
-rm -rf package/lean/{samba4,luci-app-samba4,luci-app-ttyd,luci-theme-argon,luci-lib-docker}
-svn co https://github.com/Lienol/openwrt/branches/main/package/libs/{libaudit,musl-fts,libsemanage} package/libs
+rm -rf package/lean/{samba4,luci-app-samba4,luci-app-ttyd}
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
-git apply ../.github/patches/{0001*,0002*}.patch --directory=feeds/luci
-(
-    cd feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status
-    mv index.htm index.htm.old
-    cp index_arm.htm index.htm
-)
+patches="../.github/patches"
+echo "patching feeds luci"
+git apply $patches/luci/*.patch --directory=feeds/luci
+echo "patching luci-theme-bootstrap-mod"
+git apply $patches/bootstrap/*.patch --directory=package/luci-theme-bootstrap-mod
 
 zzz="package/lean/default-settings/files/zzz-default-settings"
 sed -i 's/samba/samba4/' $zzz
-# sed -i 's#openwrt.proxy.ustclug.org#mirrors.bfsu.edu.cn\\/openwrt#' $zzz
+sed -i 's#openwrt.proxy.ustclug.org#mirrors.bfsu.edu.cn\\/openwrt#' $zzz
 sed -i "/openwrt_luci/i sed -i '/Lienol/d' /etc/opkg/distfeeds.conf" $zzz
 sed -i "/openwrt_luci/i sed -i '/helloworld/d' /etc/opkg/distfeeds.conf" $zzz
 
 packages=" \
 brcmfmac-firmware-43430-sdio brcmfmac-firmware-43455-sdio kmod-brcmfmac wpad \
 kmod-fs-ext4 kmod-fs-vfat kmod-fs-exfat dosfstools e2fsprogs antfs-mount \
-kmod-usb2 kmod-usb3 kmod-usb-storage kmod-usb-storage-extras kmod-usb-storage-uas \
+kmod-usb-storage kmod-usb-storage-extras kmod-usb-storage-uas \
 kmod-usb-net kmod-usb-net-asix-ax88179 kmod-usb-net-rtl8150 kmod-usb-net-rtl8152 \
 blkid lsblk parted fdisk cfdisk losetup resize2fs tune2fs pv unzip \
 lscpu htop iperf3 curl lm-sensors install-program 
@@ -65,6 +60,7 @@ sed -i 's/PKG_RELEASE:=5/PKG_RELEASE:=6/' package/lean/shadowsocksr-libev/Makefi
 sed -i '/PKG_SOURCE_VERSION:=/d' package/lean/shadowsocksr-libev/Makefile
 sed -i '/PKG_SOURCE_URL/a PKG_SOURCE_VERSION:=4799b312b8244ec067b8ae9ba4b85c877858976c' \
     package/lean/shadowsocksr-libev/Makefile
+
 
 
 # 更改ip
