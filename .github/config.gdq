@@ -102,7 +102,7 @@ cat >> .config <<-EOF
 CONFIG_PACKAGE_luci-app-netdata=y
 CONFIG_PACKAGE_luci-app-adguardhome=y
 CONFIG_PACKAGE_luci-app-airplay2=y
-CONFIG_PACKAGE_luci-app-amule=y
+#CONFIG_PACKAGE_luci-app-amule=y
 CONFIG_PACKAGE_luci-app-baidupcs-web=y
 CONFIG_PACKAGE_luci-app-dnsforwarder=y
 #CONFIG_PACKAGE_luci-app-docker=y
