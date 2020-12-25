@@ -88,7 +88,7 @@ CONFIG_BRCMFMAC_SDIO=y
 CONFIG_LUCI_LANG_en=y
 EOF
 
-cat >.config <<-EOF
+cat >>.config <<-EOF
 ## target
 CONFIG_TARGET_armvirt=y
 CONFIG_TARGET_armvirt_64=y
