@@ -9,7 +9,7 @@ cat >> feeds.conf.default <<-EOF
 #src-git packages https://github.com/Lienol/openwrt-packages.git;main
 #src-git routing https://git.openwrt.org/feed/routing.git
 #src-git telephony https://git.openwrt.org/feed/telephony.git
-src-git helloworld_old_no_xray https://github.com/goer99/helloworld
+#src-git helloworld_old_no_xray https://github.com/goer99/helloworld
 #src-git helloworld https://github.com/fw876/helloworld.git
 #src-git laohu https://github.com/huchanghui123/Lienol-openwrt-packages-backup
 #src-git xiaorouji https://github.com/goer99/openwrt-package-xiaorouji-fork-lineol
