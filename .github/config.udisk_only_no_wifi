@@ -22,6 +22,9 @@ EOF
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
+# 解决shadowsocks-libev编译错误
+./scripts/feeds install libpcre
+
 sed -i '/FEATURES+=/ { s/cpiogz //; s/ext4 //; s/ramdisk //; s/squashfs //; }' \
     target/linux/armvirt/Makefile
     
