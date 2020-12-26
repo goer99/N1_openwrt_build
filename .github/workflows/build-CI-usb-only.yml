@@ -36,7 +36,10 @@ jobs:
       - name: Clone Lean's openwrt
         run: |
           #git clone https://github.com/coolsnowwolf/lede
-          git clone https://github.com/goer99/openwrt-lean-stable -b lede-17.01 lede
+          #git clone https://github.com/goer99/openwrt-lean-stable -b lede-17.01 lede
+          
+          git clone https://github.com/coolsnowwolf/openwrt -b lede-17.01 lede
+          
       - name: Install feeds & Make config
         env:
           CONFIG: '.github/config.udisk_only_no_wifi'
