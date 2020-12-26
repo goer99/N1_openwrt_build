@@ -3,7 +3,7 @@
 cd lede
 
 cat >> feeds.conf.default <<-EOF
-src-git https://github.com/goer99/xiaorouji-openwrt-passwall.git
+src-git passwall_trojango https://github.com/goer99/xiaorouji-openwrt-passwall.git
 #src-git leanpackages https://github.com/coolsnowwolf/packages
 #src-git leanluci https://github.com/coolsnowwolf/luci
 #src-git luci https://github.com/Lienol/openwrt-luci.git;18.06
